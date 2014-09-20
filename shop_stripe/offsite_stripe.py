@@ -84,11 +84,11 @@ class StripeBackend(object):
             self.shop.confirm_payment(self.shop.get_order_for_id(order_id), amount, stripe_result['id'], self.backend_name)
 
             # If we're logged in, save the transaction token for use again later. Sweet.
-            if request.user.is_authenticated and request.user.get_profile().stripe_customer_id == None: 
-                customer = stripe.Customer.create(card=card_token, description=description)
-                profile = request.user.get_profile()
-                profile.stripe_customer_id = customer.id
-                profile.save()
+            #if request.user.is_authenticated and request.user.get_profile().stripe_customer_id == None: 
+            #    customer = stripe.Customer.create(card=card_token, description=description)
+            #    profile = request.user.get_profile()
+            #    profile.stripe_customer_id = customer.id
+            #    profile.save()
              
         if hasattr(settings, 'SHOP_STRIPE_PUBLISHABLE_KEY'):
             pub_key=settings.SHOP_STRIPE_PUBLISHABLE_KEY
