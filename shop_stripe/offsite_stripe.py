@@ -67,7 +67,7 @@ class StripeBackend(object):
             else: 
                 raise ConfigError('You must set SHOP_STRIPE_PRIVATE_KEY in your configuration file.')
             
-            if not customer_id:
+            if customer_id is None:
                 stripe_dict = {
                     'amount':amount,
                     'currency':currency,
