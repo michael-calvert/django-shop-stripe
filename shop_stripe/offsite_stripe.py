@@ -43,11 +43,14 @@ class StripeBackend(object):
 
     def stripe_payment_view(self, request):
         if request.POST:
-            if request.user.is_authenticated() and not request.user.get_profile().stripe_customer_id == '':
-                customer_id = request.user.get_profile().stripe_customer_id 
-            else:
-                customer_id=None
-                card_token = request.POST['stripeToken']
+            
+            #if request.user.is_authenticated() and not request.user.get_profile().stripe_customer_id == '':
+            #    customer_id = request.user.get_profile().stripe_customer_id 
+            #else:
+            #    customer_id=None
+            #    card_token = request.POST['stripeToken']
+            customer_id = None
+            card_token = request.POST['stripeToken']
             order = self.shop.get_order(request)
             order_id = self.shop.get_order_unique_id(order)
             amount = self.shop.get_order_total(order)
