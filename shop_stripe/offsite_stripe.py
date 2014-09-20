@@ -60,7 +60,7 @@ class StripeBackend(object):
             else:
                 description = 'guest customer'
             
-            currency = getattr(settings, 'SHOP_STRIPE_CURRENCY', 'usd') # Default to good ol' U.S. Dollar
+            currency = getattr(settings, 'SHOP_STRIPE_CURRENCY', 'aud') # Default to declining Australian Dollar
             
             if hasattr(settings, 'SHOP_STRIPE_PRIVATE_KEY'):
                 stripe.api_key=settings.SHOP_STRIPE_PRIVATE_KEY
